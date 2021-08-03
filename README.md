@@ -2,7 +2,7 @@
 
 it is very good and useful
 
-# How
+## How
 
 Get a valid chat token from [this page](https://twitchapps.com/tmi/).
 
@@ -16,6 +16,6 @@ const CHAT_CHANNEL = 'bvisness'; // The bot will join this Twitch channel's chat
 
 Open index.html in a browser for testing, or add the local index.html file as a Browser source in OBS to use as an overlay.
 
-# Commands
+## Commands
 
 i dont need documentation because my code is self documentingh
