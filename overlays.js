@@ -1,11 +1,12 @@
 function startBot() {
-    if (!twitchToken) {
-        throw new Error("No token!");
+    if (!(typeof TWITCH_TOKEN !== 'undefined' && TWITCH_TOKEN)) {
+        console.warn('No TWITCH_TOKEN was provided, so we cannot connect to chat.');
+        return;
     }
 
     const ws = new WebSocket('wss://irc-ws.chat.twitch.tv:443');
     function send(msg) {
-        ws.send(`PRIVMSG #bvisness :${msg}`);
+        ws.send(`PRIVMSG #${CHAT_CHANNEL} :${msg}`);
     }
 
     ws.onopen = event => {
@@ -35,7 +36,7 @@ function startBot() {
 
         switch (messageText) {
             case '!processing': {
-                lastMathMemeCommandTime = performance.now();
+                triggerMathMeme();
             } break;
         }
     }

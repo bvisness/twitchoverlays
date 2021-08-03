@@ -1,18 +1,22 @@
-const MATH_MEME_SPAWN_DURATION = 10; // seconds
-let lastMathMemeCommandTime = -10000;
-
-function doMathMeme() {
+(() => {
     const NUM_IMAGE_FILES = 21;
-    const FOV = 90 * (Math.PI/180);
+    const FOV = 100 * (Math.PI/180);
 
+    const SPAWN_DURATION = 10; // seconds
     const SPAWN_RATE = 12; // particles per second
     const SPREAD = 4000;
     const MAX_DEPTH = 8000;
     const Z_SPEED = 1000;
+    const PARTICLE_SCALE = 0.8;
     const NEAR_CLIP = 800;
     const IN_FADE_DISTANCE = 600;
     const OUT_FADE_DISTANCE = 1000;
     const MAX_OPACITY = 0.6;
+
+    let lastCommandTime = -10000;
+    window.triggerMathMeme = () => {
+        lastCommandTime = performance.now();
+    };
 
     const images = [];
     for (let i = 1; i <= NUM_IMAGE_FILES; i++) {
@@ -74,7 +78,7 @@ function doMathMeme() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         if (
-            now - lastMathMemeCommandTime < MATH_MEME_SPAWN_DURATION * 1000
+            now - lastCommandTime < SPAWN_DURATION * 1000
             && now > lastParticleSpawnTime + (1/SPAWN_RATE) * 1000
         ) {
             particles.push(makeParticle());
@@ -103,12 +107,12 @@ function doMathMeme() {
             const centerX = xz2screenX(particle.x, particle.z);
             const rightX = xz2screenX(particle.x + nw/2, particle.z);
             const leftX = xz2screenX(particle.x - nw/2, particle.z);
-            const screenW = rightX - leftX;
+            const screenW = (rightX - leftX) * PARTICLE_SCALE;
 
             const centerY = yz2screenY(particle.y, particle.z);
             const topY = yz2screenY(particle.y + nh/2, particle.z);
             const bottomY = yz2screenY(particle.y - nh/2, particle.z);
-            const screenH = topY - bottomY;
+            const screenH = (topY - bottomY) * PARTICLE_SCALE;
 
             // Calculate opacity
             let travelDistance = MAX_DEPTH - particle.z;
@@ -132,5 +136,4 @@ function doMathMeme() {
         window.requestAnimationFrame(mathMemeFrame);
     }
     mathMemeFrame();
-}
-doMathMeme();
+})();
