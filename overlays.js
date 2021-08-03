@@ -9,16 +9,16 @@ function startBot() {
     }
 
     ws.onopen = event => {
-        ws.send(`PASS oauth:${twitchToken}`);
-        ws.send(`NICK benkinsci`);
-        ws.send('JOIN #bvisness')
+        ws.send(`PASS ${TWITCH_TOKEN}`);
+        ws.send(`NICK ${BOT_NICKNAME}`);
+        ws.send(`JOIN #${CHAT_CHANNEL}`)
         // send('Hello, world!');
     };
     ws.onerror = event => {
         console.error('failed to connect to Twitch', event.data);
     };
 
-    const msgDelimiter = 'PRIVMSG #bvisness :';
+    const msgDelimiter = `PRIVMSG #${CHAT_CHANNEL} :`;
 
     ws.onmessage = event => {
         const msg = event.data;
