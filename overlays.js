@@ -6,7 +6,11 @@ function startBot() {
 
     let ws = null;
     function send(msg) {
-        console.log('< ' + msg);
+        if (msg.includes('PASS')) {
+            console.log('< ******* message redacted *******');
+        } else {
+            console.log('< ' + msg);
+        }
         ws.send(msg);
     }
     function say(text) {
