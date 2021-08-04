@@ -4,27 +4,22 @@
 <head>
     <meta charset="utf-8">
     <title>Twitch Overlays</title>
-    <style>
-        body {
-            /* OBS automatically overrides this to make the body transparent by default. */
-            background-color: #aaa;
-        }
 
-        canvas {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-        }
-    </style>
-
+    <link rel="stylesheet" href="style.css">
     <script src="config.js"></script>
 </head>
 
 <body>
+    <div id="ircsuccess" class="toast bg-green">
+        Connected to Twitch chat ✔
+    </div>
+    <div id="ircdisconnect" class="toast bg-yellow">
+        ⚠ Disconnected from Twitch chat, retrying...
+    </div>
+
     <canvas id="math"></canvas>
 
+    <script src="toaster.js"></script>
     <script src="overlays.js"></script>
     <script src="math.js"></script>
 </body>
