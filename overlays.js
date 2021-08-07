@@ -76,6 +76,21 @@ function startBot() {
             case '!processing': {
                 triggerMathMeme();
             } break;
+            case '!why': {
+                say('because handmade lol');
+            } break;
+            case '!who':
+            case '!whomst': {
+                say('me');
+            } break;
+            case '!when':
+            case '!whenst': {
+                say('now');
+            } break;
+            case '!commands': {
+                say('mY cOdE iS sElF dOcUmEnTiNg');
+                say('https://github.com/bvisness/twitchoverlays/blob/main/overlays.js');
+            }
         }
     }
 }
