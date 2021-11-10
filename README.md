@@ -16,6 +16,8 @@ const CHAT_CHANNEL = 'bvisness'; // The bot will join this Twitch channel's chat
 
 Open index.html in a browser for testing, or add the local index.html file as a Browser source in OBS to use as an overlay.
 
+Edit the contents of [`user.js`](user.js) to customize the bot's behavior.
+
 ## Commands
 
 i dont need documentation because my code is self documentingh
