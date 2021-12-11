@@ -1,3 +1,10 @@
+// ================================= API Docs =================================
+//
+// triggerMathMeme(): void
+//
+//     Activate all your brain cells.
+//
+
 (() => {
     const NUM_IMAGE_FILES = 21;
     const FOV = 100 * (Math.PI/180);
@@ -21,7 +28,7 @@
     const images = [];
     for (let i = 1; i <= NUM_IMAGE_FILES; i++) {
         const image = new Image();
-        image.src = `math/${i}.png`;
+        image.src = `extras/math/${i}.png`;
         images.push(image);
     }
 
