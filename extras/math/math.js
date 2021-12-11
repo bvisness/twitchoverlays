@@ -28,7 +28,7 @@
     const images = [];
     for (let i = 1; i <= NUM_IMAGE_FILES; i++) {
         const image = new Image();
-        image.src = `extras/math/${i}.png`;
+        image.src = `extras/math/images/${i}.png`;
         images.push(image);
     }
 
